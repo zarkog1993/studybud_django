@@ -2,6 +2,7 @@
 <h1>Home template</h1>
 <div>
 	<div>
+		<a href="{% url 'create-room' %}">Create Room</a>
 		{% for room in rooms %}
 		<div>
 			<span>@{{ room.host }}</span>
