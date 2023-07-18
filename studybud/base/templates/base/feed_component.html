@@ -1,0 +1,15 @@
+{% for room in rooms %}
+<div>
+    {% if request.user == room.host %}
+        <a href="{% url 'update-room' room.id %}">Edit Room</a>
+        <a href="{% url 'delete-room' room.id %}">Delete Room</a>
+    {% endif %}
+    <br>
+    <span>@{{ room.host }}</span>
+    <h5>
+        <a href="{% url 'room' room.id %}">{{ room.id }}-- {{ room.name }}</a>
+        <small>{{ room.topic.name }}</small>
+    </h5>
+    <hr />
+</div>
+{% endfor %}
