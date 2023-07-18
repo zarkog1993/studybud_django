@@ -8,17 +8,17 @@
 </style>
 <div class="home-container">
 	<div>
-		{% include 'base/topics_component.html' %}
+		{% include 'base/home/topics_component.html' %}
 	</div>
 
 	<div>
 		<h3>{{ room_count }} rooms available</h3>
 		<a href="{% url 'create-room' %}">Create Room</a>
-		{% include 'base/feed_component.html' %}
+		{% include 'base/home/feed_component.html' %}
 	</div>
 
 	<div>
-		{% include 'base/activity_component.html' %}
+		{% include 'base/home/activity_component.html' %}
 	</div>
 </div>
 {% endblock content %}
