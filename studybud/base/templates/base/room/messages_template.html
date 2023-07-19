@@ -1,8 +1,9 @@
+<h5>Number of comments: {{ room_messages.count }}</h5>
 {% for message in room_messages %}
 <div class="thread">
     <div class="thread__top">
         <div class="thread__author">
-            <a href="#" class="thread__authorInfo">
+            <a href="{% url 'user-profile' message.user.id %}" class="thread__authorInfo">
                 <div class="avatar avatar--small">
                     <img src="https://randomuser.me/api/portraits/men/37.jpg" />
                 </div>
