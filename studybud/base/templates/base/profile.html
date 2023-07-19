@@ -1,18 +1,24 @@
 {% extends 'main.html' %}
-
 {% block content %}
-<h1>{{ user.username }}</h1>
-<div class="profile-container">
-    <div>
-		{% include 'base/home/topics_component.html' %}
-    </div>
+	<main class="profile-page layout layout--3">
+		<div class="container">
+			<!-- Topics Start -->
+			<div class="topics">
+				{% include 'base/home/topics_component.html' %}
+			</div>
+			<!-- Topics End -->
 
-    <div>
-        {% include 'base/home/feed_component.html' %}
-    </div>
+			<!-- Room List Start -->
+			<div class="roomList">
+				{% include 'base/home/feed_component.html' %}
+			</div>
+			<!-- Room List End -->
 
-    <div>
-		{% include 'base/home/activity_component.html' %}
-    </div>
-</div>
+			<!-- Activities Start -->
+			<div class="activities">
+				{% include 'base/home/activity_component.html' %}
+			</div>
+			<!-- Activities End -->
+		</div>
+	</main>
 {% endblock content %}
