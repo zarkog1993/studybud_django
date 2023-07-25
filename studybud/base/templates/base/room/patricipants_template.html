@@ -1,7 +1,15 @@
-<h3>Participants</h3>
-<hr>
-{% for user in participants %}
-    <div>
-        <p>@{{ user.username }}</p>
+<div class="participants">
+    <h3 class="participants__top">Participants <span>({{ participants.count }} joined)</span></h3>
+    <div class="participants__list scroll">
+        {% for user in participants %}
+        <a href="profile.html" class="participant">
+            <div class="avatar avatar--medium">
+                <img src="https://randomuser.me/api/portraits/men/37.jpg" />
+            </div>
+            <p>
+                {{ user.username }}
+            </p>
+        </a>
+        {% endfor %}
     </div>
-{% endfor %}
+</div>
