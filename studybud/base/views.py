@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from .forms import RoomForm
+from .forms import RoomForm, UserForm
 from .models import Message, Room, Topic
 
 # Create your views here.
@@ -142,6 +142,7 @@ def updateRoom(request, pk):
         room.name = request.POST.get('name')
         topic.name = topic
         room.description = request.POST.get('description')
+        room.save()
         return redirect('home')
 
     context = {'form': form, 'topics': topics, 'room': room}
@@ -172,3 +173,17 @@ def deleteMessage(request, pk):
         room_message.delete()
         return redirect('home')
     return render(request, 'base/delete.html', {'obj':room_message})
+
+
+@login_required(login_url='login')
+def updateUser(request):
+    user = request.user
+    form = UserForm(instance=request.user)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            redirect('user-profile', pk=user.id)
+
+    return render(request, 'base/update-user.html', {'form': form})
